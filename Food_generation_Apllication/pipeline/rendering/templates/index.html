@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Diet Planner</title>
+    <link rel="stylesheet" href="../static/styles.css" />
+</head>
+<body>
+    <header class="hero">
+        <h1>Weekly Diet Planner</h1>
+        <p>Tell us what you have, what you want, and how you eat. We will craft the rest.</p>
+    </header>
+
+    <main class="layout">
+        <section class="card">
+            <h2>Step 1 · Your Preferences</h2>
+            <form id="preferences-form">
+                <label for="available-item-input">Items Available</label>
+                <div class="list-input">
+                    <div class="list-input-controls">
+                        <input
+                            type="text"
+                            id="available-item-input"
+                            placeholder="e.g. tomatoes"
+                            aria-describedby="available-items-hint"
+                        />
+                        <button type="button" id="add-available-item">Add</button>
+                    </div>
+                    <p class="hint" id="available-items-hint">Add one item at a time, then press Continue when done.</p>
+                    <ul id="available-items-list" class="chip-list" aria-live="polite"></ul>
+                    <input type="hidden" id="available-items-hidden" name="available_items" value="[]" />
+                </div>
+
+                <label for="weekly-goal">Weekly Goal</label>
+                <textarea
+                    id="weekly-goal"
+                    name="weekly_goal"
+                    placeholder="e.g. cut down on sugar, increase protein intake"
+                    rows="3"
+                    required
+                ></textarea>
+
+                <label for="diet-choice">Diet Preference</label>
+                <select id="diet-choice" name="diet_choice" required>
+                    <option value="" disabled selected>Select a diet</option>
+                </select>
+
+                <label for="custom-diet" class="custom-diet-label hidden">Describe Your Diet</label>
+                <textarea
+                    id="custom-diet"
+                    name="custom_diet_description"
+                    class="hidden"
+                    placeholder="Describe your personal diet approach"
+                    rows="3"
+                ></textarea>
+
+                <button type="submit">Continue</button>
+            </form>
+        </section>
+
+        <section class="card info">
+            <h2>What We Need</h2>
+            <ul>
+                <li><strong>Items Available:</strong> Helps us build meals with what you already own.</li>
+                <li><strong>Weekly Goal:</strong> Guides the nutritional focus for the week.</li>
+                <li><strong>Diet Preference:</strong> Choose a common diet, go without, or describe your own.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const COMMON_DIETS = __COMMON_DIETS__;
+        const NO_DIET_OPTION = "__NO_DIET_OPTION__";
+        const CUSTOM_DIET_OPTION = "__CUSTOM_DIET_OPTION__";
+
+        const select = document.getElementById("diet-choice");
+        const customDietField = document.getElementById("custom-diet");
+        const customDietLabel = document.querySelector(".custom-diet-label");
+
+        const options = [...COMMON_DIETS, NO_DIET_OPTION, CUSTOM_DIET_OPTION];
+        options.forEach((option) => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option;
+            optionElement.textContent = option;
+            select.appendChild(optionElement);
+        });
+
+        select.addEventListener("change", () => {
+            const isCustom = select.value === CUSTOM_DIET_OPTION;
+            customDietField.classList.toggle("hidden", !isCustom);
+            customDietLabel.classList.toggle("hidden", !isCustom);
+            customDietField.required = isCustom;
+        });
+
+        const state = {
+            availableItems: [],
+        };
+
+        const itemInput = document.getElementById("available-item-input");
+        const addItemButton = document.getElementById("add-available-item");
+        const itemsList = document.getElementById("available-items-list");
+        const itemsHidden = document.getElementById("available-items-hidden");
+        const hint = document.getElementById("available-items-hint");
+        const form = document.getElementById("preferences-form");
+        const defaultHintMessage = hint.textContent;
+
+        const renderItems = () => {
+            itemsList.innerHTML = "";
+            state.availableItems.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.className = "chip";
+
+                const span = document.createElement("span");
+                span.textContent = item;
+
+                const removeButton = document.createElement("button");
+                removeButton.type = "button";
+                removeButton.dataset.index = String(index);
+                removeButton.setAttribute("aria-label", `Remove ${item}`);
+                removeButton.innerHTML = "&times;";
+
+                li.appendChild(span);
+                li.appendChild(removeButton);
+                itemsList.appendChild(li);
+            });
+
+            itemsHidden.value = JSON.stringify(state.availableItems);
+
+            if (state.availableItems.length > 0) {
+                hint.textContent = defaultHintMessage;
+                hint.classList.remove("error");
+            }
+        };
+
+        const addItem = () => {
+            const value = itemInput.value.trim();
+            if (!value) {
+                return;
+            }
+
+            state.availableItems.push(value);
+            itemInput.value = "";
+            renderItems();
+            itemInput.focus();
+        };
+
+        addItemButton.addEventListener("click", addItem);
+
+        itemInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                addItem();
+            }
+        });
+
+        itemsList.addEventListener("click", (event) => {
+            const button = event.target.closest("button[data-index]");
+            if (!button) {
+                return;
+            }
+            const index = Number(button.dataset.index);
+            if (Number.isNaN(index)) {
+                return;
+            }
+            state.availableItems.splice(index, 1);
+            renderItems();
+        });
+
+        form.addEventListener("submit", (event) => {
+            if (state.availableItems.length === 0) {
+                event.preventDefault();
+                hint.textContent = "Add at least one item before continuing.";
+                hint.classList.add("error");
+                itemInput.focus();
+            }
+        });
+
+        renderItems();
+    </script>
+</body>
+</html>
