@@ -1,5 +1,6 @@
-# Weekly Diet Planner
 
+#Version 1 
+# Weekly Diet Planner
 A full-stack application that collects pantry items and wellness goals, preprocesses them, calls an OpenAI model to craft weekday meal plans, stores the results, and renders them in a polished dashboard and React interface.
 
 ## Key Features
@@ -105,3 +106,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+#Version 2 ( will work specifically with the iu eats database as reference for sudgestion mainly beacause i am too lazy and eating too unhealthy and need some structure in my life)
